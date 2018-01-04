@@ -1,0 +1,28 @@
+<div class="content_wrapper">
+  <div class="header_wrapper">
+    <div class="page_header">
+      <h1>Books</h1>
+      <div class="create_button"><%= link_to 'Добавить книгу +', new_book_path %></div>
+    </div>
+  </div>
+  <div class="page_wrapper">
+    <div class="page_content">
+      <div class="table_wrapper">
+        <table cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td class="left">Автор</td>
+              <td class="left">Название</td>
+              <td>Объем</td>
+              <td>ВиМ</td>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @books %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

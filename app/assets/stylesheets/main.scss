@@ -1,0 +1,420 @@
+$dark_bg: #263238;
+$soft_bg: #edf1f5;
+$medium_bg: #f3f3f3;
+
+$main_text_color: #333333;
+$table_text_dark: #666666;
+$table_text_medium: #7c7c7c;
+$table_text_soft: #d2d2d2;
+
+$table_border_color: #e4e7ea;
+$form_border_color: #c9ced4;
+
+$green: #52c157;
+$yellow: #ffbb44;
+$red: #f33155;
+$red_soft: #fff5f7;
+$blue: #41b3f9;
+
+
+$main_fonts: Roboto,"Helvetica Neue",sans-serif;
+
+
+@mixin inline_block {
+  display: inline-block;
+  vertical-align: top;
+}
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+html, body{
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  color: $main_text_color;
+  font-family: $main_fonts;
+  font-size: 1em;
+  text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+ul, li{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+h1, h2, h3{
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+input, textarea{
+  padding: 0;
+  margin: 0;
+  outline: none !important;
+}
+
+textarea{
+  resize: none;
+}
+
+input[type='submit']{
+  text-align: center;
+  cursor: pointer;
+  border: 0;
+}
+
+#wrapper{
+  width: 100%;
+  height: 100%;
+  display: table;
+  table-layout: fixed;
+
+  .page-container{
+    display: table-row;
+  }
+
+  #sidebar{
+    width: 260px;
+    display: table-cell;
+    vertical-align: top;
+  }
+
+  #content{
+    width: 100%;
+    display: table-cell;
+    vertical-align: top;
+    overflow: scroll;
+  }
+}
+
+// ---------------------------- SIDEBAR ----------------------------
+#sidebar{
+  background: $dark_bg;
+
+  .profile_item{
+    height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    color: #ffffff;
+    position: relative;
+
+    .email{
+      line-height: 60px;
+      padding: 0 10px;
+    }
+
+    a{
+      position: absolute;
+      vertical-align: middle;
+      right: 10px;
+      top: 50%;
+      margin-top: -11px;
+      color: #ffffff;
+    }
+  }
+}
+
+
+ul.sidebar-list{
+  li{
+
+    a{
+      padding: 20px 10px;
+      color: rgba(255,255,255,.75);
+      display: block;
+
+      .material-icons{
+        width: 36px;
+        margin-top: -3px;
+        float: left;
+      }
+
+      &:after{
+        content: '〉';
+        @include inline_block;
+        float: right;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+    }
+
+    &:hover, &.active{
+      background-color: rgba(0,0,0,.2);
+
+      a{
+        color: #ffffff;
+      }
+    }
+
+    &.active a{
+      color: $yellow;
+    }
+  }
+}
+
+// ---------------------------- CONTENT ----------------------------
+#content{
+  background: $soft_bg;
+
+  .content_wrapper{
+    width: 100%;
+    display: table;
+
+    .header_wrapper{
+      width: 100%;
+      height: 60px;
+      display: table-row;
+
+      .page_header{
+        display: table-cell;
+        vertical-align: middle;
+        position: relative;
+        padding: 0 20px;
+      }
+    }
+
+    .page_wrapper{
+      width: 100%;
+      display: table-row;
+
+      .page_content{
+        display: table-cell;
+        vertical-align: top;
+        padding: 20px;
+      }
+    }
+  }
+
+  h1{
+    display: inline-block;
+  }
+
+  .create_button{
+    background: $green;
+    display: inline-block;
+    float: right;
+
+    a{
+      color: #ffffff;
+      display: block;
+      padding: 10px 30px;
+    }
+  }
+}
+
+.filter_form_wrapper{
+  background: #ffffff;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px 10px 10px;
+}
+
+.table_wrapper{
+  background: #ffffff;
+  width: 100%;
+  padding: 20px;
+
+  table{
+    width: 100%;
+
+    tr:hover{
+      td.actions a{
+        display: inline;
+      }
+    }
+
+    td{
+      padding: 10px 5px;
+      text-align: center;
+      color: $table_text_medium;
+      border-bottom: 1px solid $form_border_color;
+
+      a{
+        color: $table_text_medium;
+      }
+
+      &.left{
+        text-align: left;
+      }
+
+      &.right{
+        text-align: right;
+      }
+
+      &.image{
+        width: 48px;
+        padding: 10px;
+
+        img{
+          width: 48px;
+          height: 48px;
+        }
+      }
+
+      &.actions{
+        width: 50px;
+
+        a{
+          display: none;
+        }
+
+        a.delete{
+          color: $red;
+        }
+      }
+    }
+
+    thead{
+      td{
+        color: $table_text_dark;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.pagination{
+  margin-top: 20px;
+  text-align: center;
+
+  a{
+    color: $table_text_dark;
+    padding: 5px;
+  }
+
+  .current{
+    color: $blue;
+    padding: 5px;
+  }
+
+  .disabled{
+    color: $table_text_soft;
+  }
+}
+
+// ---------------------------- FORM ----------------------------
+.form_wrapper{
+  width: 100%;
+  background: #ffffff;
+  padding: 20px;
+}
+
+.popup_form_wrapper{
+  margin-top: 30px;
+}
+
+.form_wrapper, .popup_form_wrapper{
+  .error_explanation{
+    width: 100%;
+    background: $red_soft;
+    position: relative;
+    margin-bottom: 30px;
+    padding: 10px;
+    border: 1px solid $red;
+
+    .material-icons{
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      color: $red;
+    }
+
+    h2{
+      color: $red;
+      margin-bottom: 10px;
+    }
+
+    li{
+      color: $table_text_dark;
+    }
+  }
+
+  .form_item{
+    width: 100%;
+    margin-top: 30px;
+
+    &:first-of-type{ margin-top: 0; }
+
+    .label_item{
+      font-size: 16px;
+      margin-bottom: 5px;
+
+      label{
+        cursor: pointer;
+      }
+    }
+
+    .input_item{
+      input, textarea{
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        color: $table_text_dark;
+        border: 1px solid $form_border_color;
+      }
+    }
+
+    &.actions{
+      input[type='submit']{
+        background: $green;
+        width: 200px;
+        color: #ffffff;
+        display: inline-block;
+        vertical-align: top;
+        border: none;
+      }
+
+      a.delete{
+        background: $red;
+        width: 200px;
+        display: inline-block;
+        vertical-align: top;
+        float: right;
+        padding: 10px 0;
+        text-align: center;
+        color: #ffffff;
+
+        .material-icons{
+          vertical-align: top;
+          margin-top: -5px;
+        }
+      }
+    }
+
+    &.check_box{
+      .input_item{
+        width: 30px;
+        display: inline-block;
+        vertical-align: top;
+
+        input[type='checkbox']{
+          width: 30px;
+          vertical-align: top;
+          margin-top: 1px;
+          padding: 0px;
+          cursor: pointer;
+        }
+      }
+
+      .label_item{
+        display: inline-block;
+        vertical-align: top;
+        margin-bottom: 0px;
+      }
+    }
+  }
+}

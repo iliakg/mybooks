@@ -1,0 +1,7 @@
+<tr>
+  <td><%= book_counter + 1 %></td>
+  <td class="left"><%= book.author %></td>
+  <td class="left"><%= book.title %></td>
+  <td><%= number_with_delimiter(book.length, delimiter: ' ') %></td>
+  <td><%= vim(book.length) %></td>
+</tr>
